@@ -12,13 +12,46 @@ namespace ANNProject
 {
     public partial class MainMenu : Form
     {
+        private void Preload()
+        {
+            //This load files
+        }
+
+        private void PreExit()
+        {
+            //This save files
+        }
+
         public MainMenu()
         {
             InitializeComponent();
+            Preload();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
+            // I made a mistake, sorry
+   
+        }
+        private void btn_AddArtClick(object sender, EventArgs e)
+        {
+            //goto add art form
+        }
+
+        private void btn_AddCategory_Click(object sender, EventArgs e)
+        {
+            //go to add category form
+        }
+
+        private void btn_Browse_Click(object sender, EventArgs e)
+        {
+            //go to browse art form
+        }
+
+        private void lbl_Exit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            PreExit();
+            //This to exit
 
         }
     }
