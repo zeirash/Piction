@@ -1,6 +1,6 @@
 ﻿namespace ANNProject
 {
-    partial class MainMenu
+    partial class MainMenuForm
     {
         /// <summary>
         /// Required designer variable.

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ANNProject
 {
-    public partial class MainMenu : Form
+    public partial class MainMenuForm : Form
     {
         private void Preload()
         {
@@ -22,7 +22,7 @@ namespace ANNProject
             //This save files
         }
 
-        public MainMenu()
+        public MainMenuForm()
         {
             InitializeComponent();
             Preload();
