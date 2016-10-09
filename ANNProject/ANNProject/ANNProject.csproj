@@ -67,6 +67,18 @@
     <Compile Include="AddArtForm.Designer.cs">
       <DependentUpon>AddArtForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BrowseArtForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrowseArtForm.Designer.cs">
+      <DependentUpon>BrowseArtForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CheckCategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckCategoryForm.Designer.cs">
+      <DependentUpon>CheckCategoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +89,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddArtForm.resx">
       <DependentUpon>AddArtForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BrowseArtForm.resx">
+      <DependentUpon>BrowseArtForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckCategoryForm.resx">
+      <DependentUpon>CheckCategoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>

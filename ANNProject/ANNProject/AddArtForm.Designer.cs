@@ -34,6 +34,7 @@
             this.txt_NewCategory = new System.Windows.Forms.TextBox();
             this.btn_AddNew = new System.Windows.Forms.Button();
             this.cmb_Category = new System.Windows.Forms.ComboBox();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // label1
@@ -99,11 +100,20 @@
             this.cmb_Category.TabIndex = 5;
             this.cmb_Category.Text = "Select Category";
             // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(13, 47);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(520, 260);
+            this.listView1.TabIndex = 6;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
             // AddArtForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(545, 482);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.cmb_Category);
             this.Controls.Add(this.btn_AddNew);
             this.Controls.Add(this.txt_NewCategory);
@@ -125,5 +135,6 @@
         private System.Windows.Forms.TextBox txt_NewCategory;
         private System.Windows.Forms.Button btn_AddNew;
         private System.Windows.Forms.ComboBox cmb_Category;
+        private System.Windows.Forms.ListView listView1;
     }
 }

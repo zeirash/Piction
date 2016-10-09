@@ -28,23 +28,21 @@ namespace ANNProject
             Preload();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-            // I made a mistake, sorry
-   
-        }
+
         private void btn_AddArtClick(object sender, EventArgs e)
         {
             //goto add art form
         }
 
-        private void btn_AddCategory_Click(object sender, EventArgs e)
+        private void btn_CheckCategory_Click(object sender, EventArgs e)
         {
             //go to add category form
         }
 
         private void btn_Browse_Click(object sender, EventArgs e)
         {
+            //check if there is art in the system
+
             //go to browse art form
         }
 
