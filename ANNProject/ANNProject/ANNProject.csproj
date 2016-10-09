@@ -42,6 +42,9 @@
     <Reference Include="Accord.MachineLearning">
       <HintPath>net45\Accord.MachineLearning.dll</HintPath>
     </Reference>
+    <Reference Include="Accord.Math">
+      <HintPath>net45\Accord.Math.dll</HintPath>
+    </Reference>
     <Reference Include="Accord.Neuro">
       <HintPath>net45\Accord.Neuro.dll</HintPath>
     </Reference>
