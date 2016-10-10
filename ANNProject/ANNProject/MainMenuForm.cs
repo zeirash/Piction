@@ -12,20 +12,12 @@ namespace ANNProject
 {
     public partial class MainMenuForm : Form
     {
-        private void Preload()
-        {
-            //This load files
-        }
-
-        private void PreExit()
-        {
-            //This save files
-        }
+      
 
         public MainMenuForm()
         {
             InitializeComponent();
-            Preload();
+           
         }
 
 
@@ -48,7 +40,7 @@ namespace ANNProject
 
         private void lbl_Exit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            PreExit();
+            
             //This to exit
 
         }
