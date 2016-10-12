@@ -16,5 +16,20 @@ namespace ANNProject
         {
             InitializeComponent();
         }
+
+        private void btn_AddNew_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_SubmitArt_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Back_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
     }
 }
