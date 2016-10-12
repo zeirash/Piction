@@ -24,6 +24,9 @@ namespace ANNProject
         private void btn_AddArtClick(object sender, EventArgs e)
         {
             //goto add art form
+            AddArtForm addArtForm = new AddArtForm();
+            addArtForm.Show();
+            this.Hide();
         }
 
         private void btn_CheckCategory_Click(object sender, EventArgs e)
@@ -40,7 +43,7 @@ namespace ANNProject
 
         private void lbl_Exit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            
+            Application.Exit();
             //This to exit
 
         }

@@ -19,7 +19,16 @@ namespace ANNProject
 
         private void btn_AddNew_Click(object sender, EventArgs e)
         {
+            //open file dialog
+            OpenFileDialog open = new OpenFileDialog();
+            open.Title = "Select image";
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            open.Multiselect = true;
+            DialogResult result = open.ShowDialog();
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
 
+            }
         }
 
         private void btn_SubmitArt_Click(object sender, EventArgs e)
