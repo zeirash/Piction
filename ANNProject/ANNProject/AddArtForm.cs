@@ -27,7 +27,19 @@ namespace ANNProject
             DialogResult result = open.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-
+                string[] files = open.FileNames;
+                foreach (string image in files)
+                {
+                    Image img = Image.FromFile(image);
+                    imageList1.Images.Add("tes", img);
+                }
+                imageList1.ImageSize = new Size(50, 50);
+                for (int j = 0; j < this.imageList1.Images.Count; j++)
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.ImageIndex = j;
+                    this.listView_image.Items.Add(item);
+                }
             }
         }
 
@@ -39,6 +51,11 @@ namespace ANNProject
         private void btn_Back_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
+        }
+
+        private void AddArtForm_Load(object sender, EventArgs e)
+        {
+            listView_image.View = View.LargeIcon;
         }
     }
 }

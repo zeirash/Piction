@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_Back = new System.Windows.Forms.LinkLabel();
             this.btn_SubmitArt = new System.Windows.Forms.Button();
@@ -35,6 +36,7 @@
             this.btn_AddNew = new System.Windows.Forms.Button();
             this.cmb_Category = new System.Windows.Forms.ComboBox();
             this.listView_image = new System.Windows.Forms.ListView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -63,7 +65,7 @@
             // btn_SubmitArt
             // 
             this.btn_SubmitArt.Location = new System.Drawing.Point(9, 270);
-            this.btn_SubmitArt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_SubmitArt.Margin = new System.Windows.Forms.Padding(2);
             this.btn_SubmitArt.Name = "btn_SubmitArt";
             this.btn_SubmitArt.Size = new System.Drawing.Size(347, 29);
             this.btn_SubmitArt.TabIndex = 2;
@@ -75,7 +77,7 @@
             // 
             this.txt_NewCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_NewCategory.Location = new System.Drawing.Point(9, 236);
-            this.txt_NewCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_NewCategory.Margin = new System.Windows.Forms.Padding(2);
             this.txt_NewCategory.Name = "txt_NewCategory";
             this.txt_NewCategory.Size = new System.Drawing.Size(348, 26);
             this.txt_NewCategory.TabIndex = 3;
@@ -86,7 +88,7 @@
             // 
             this.btn_AddNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_AddNew.Location = new System.Drawing.Point(9, 203);
-            this.btn_AddNew.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_AddNew.Margin = new System.Windows.Forms.Padding(2);
             this.btn_AddNew.Name = "btn_AddNew";
             this.btn_AddNew.Size = new System.Drawing.Size(69, 29);
             this.btn_AddNew.TabIndex = 4;
@@ -99,7 +101,7 @@
             this.cmb_Category.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmb_Category.FormattingEnabled = true;
             this.cmb_Category.Location = new System.Drawing.Point(81, 203);
-            this.cmb_Category.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmb_Category.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_Category.Name = "cmb_Category";
             this.cmb_Category.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmb_Category.Size = new System.Drawing.Size(275, 24);
@@ -109,11 +111,17 @@
             // listView_image
             // 
             this.listView_image.Location = new System.Drawing.Point(9, 31);
-            this.listView_image.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listView_image.Margin = new System.Windows.Forms.Padding(2);
             this.listView_image.Name = "listView_image";
             this.listView_image.Size = new System.Drawing.Size(348, 170);
             this.listView_image.TabIndex = 6;
             this.listView_image.UseCompatibleStateImageBehavior = false;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // AddArtForm
             // 
@@ -127,9 +135,10 @@
             this.Controls.Add(this.btn_SubmitArt);
             this.Controls.Add(this.btn_Back);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddArtForm";
             this.Text = "Add Art";
+            this.Load += new System.EventHandler(this.AddArtForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,5 +153,6 @@
         private System.Windows.Forms.Button btn_AddNew;
         private System.Windows.Forms.ComboBox cmb_Category;
         private System.Windows.Forms.ListView listView_image;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
