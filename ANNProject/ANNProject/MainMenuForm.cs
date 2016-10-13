@@ -32,6 +32,9 @@ namespace ANNProject
         private void btn_CheckCategory_Click(object sender, EventArgs e)
         {
             //go to add category form
+            CheckCategoryForm CheckCategoryForm = new CheckCategoryForm();
+            CheckCategoryForm.Show();
+            this.Hide();
         }
 
         private void btn_Browse_Click(object sender, EventArgs e)

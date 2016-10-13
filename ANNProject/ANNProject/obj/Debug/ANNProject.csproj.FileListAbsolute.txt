@@ -32,3 +32,5 @@ C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\obj\Debug\ANNProj
 C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\obj\Debug\ANNProject.MainMenuForm.resources
 C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\obj\Debug\ANNProject.Properties.Resources.resources
 C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\obj\Debug\ANNProject.csproj.GenerateResource.Cache
+C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\obj\Debug\ANNProject.exe
+C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\obj\Debug\ANNProject.pdb
