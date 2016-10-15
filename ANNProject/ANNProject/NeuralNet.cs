@@ -25,7 +25,11 @@ namespace ANNProject
             an = new ActivationNetwork(new SigmoidFunction(), inputLayerCount, hiddenLayerCount, outputLayerCount);
         }
 
+        public void loadArt()
+        {
 
+
+        }
 
         public void preLoad()
         {

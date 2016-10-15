@@ -15,6 +15,8 @@ namespace ANNProject
         public AddArtForm()
         {
             InitializeComponent();
+            cmb_Category.Visible = false;
+            txt_NewCategory.Visible = false;
         }
 
         private void btn_AddNew_Click(object sender, EventArgs e)
@@ -39,6 +41,8 @@ namespace ANNProject
                     ListViewItem item = new ListViewItem(System.IO.Path.GetFileNameWithoutExtension(imageFileDialog.SafeFileNames[i]), i);
                     listView_image.Items.Add(item);
                 }
+                cmb_Category.Visible = true;
+                txt_NewCategory.Visible = true;
             }
 
             

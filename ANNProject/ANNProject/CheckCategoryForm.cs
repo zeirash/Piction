@@ -15,11 +15,15 @@ namespace ANNProject
         public CheckCategoryForm()
         {
             InitializeComponent();
+            lbl_Category.Visible = false;
         }
 
         private void btn_AddCheckArtCategory_Click(object sender, EventArgs e)
         {
+            String CategoryName = "";
 
+            lbl_Category.Text = CategoryName;
+            lbl_Category.Visible = true;
         }
     }
 }
