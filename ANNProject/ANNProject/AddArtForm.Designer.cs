@@ -110,6 +110,7 @@
             // 
             // listView_image
             // 
+            this.listView_image.LargeImageList = this.imageList1;
             this.listView_image.Location = new System.Drawing.Point(9, 31);
             this.listView_image.Margin = new System.Windows.Forms.Padding(2);
             this.listView_image.Name = "listView_image";

@@ -25,31 +25,21 @@ namespace ANNProject
             imageFileDialog.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
             imageFileDialog.Multiselect = true;
             DialogResult result = imageFileDialog.ShowDialog();
-            //if (result == System.Windows.Forms.DialogResult.OK)
-            //{
-                string[] files = imageFileDialog.FileNames;
-                foreach (string image in files)
-                {
-                string imagePath = image.ToString();
-                string imagepath = imagePath.ToString();
-                imagepath = imagepath.Substring(imagepath.LastIndexOf("\\"));
-                imagepath = imagepath.Remove(0, 1);
-                    Image img = Image.FromFile(image);
-                    imageList1.Images.Add(img);
-                }
-                
-                listView_image.View = View.LargeIcon;
-                imageList1.ImageSize = new Size(50, 50);
-                listView_image.LargeImageList = imageList1;
+            if (result == DialogResult.OK)
+            {
 
+                imageList1.Images.Clear();
+                listView_image.Items.Clear();
+                imageList1.ImageSize = new Size(60, 60);
 
-                for (int j = 0; j < this.imageList1.Images.Count; j++)
+                for (int i = 0; i < imageFileDialog.FileNames.Count(); i++)
                 {
-                    ListViewItem item = new ListViewItem();
-                    item.ImageIndex = j;
-                    this.listView_image.Items.Add(item);
+                    Bitmap image = new Bitmap(imageFileDialog.FileNames[i]);
+                    imageList1.Images.Add(image);
+                    ListViewItem item = new ListViewItem(System.IO.Path.GetFileNameWithoutExtension(imageFileDialog.SafeFileNames[i]), i);
+                    listView_image.Items.Add(item);
                 }
-            //}
+            }
 
             
         }
@@ -66,7 +56,7 @@ namespace ANNProject
 
         private void AddArtForm_Load(object sender, EventArgs e)
         {
-            listView_image.View = View.LargeIcon;
+            
         }
     }
 }
