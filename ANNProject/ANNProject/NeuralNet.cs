@@ -14,6 +14,19 @@ namespace ANNProject
 {
     class NeuralNet
     {
+        //activations
+        ActivationNetwork an;
+        BackPropagationLearning bpl;
+        SOMLearning sml;
+
+
+        public void setActivationNetwork(int inputLayerCount, int hiddenLayerCount, int outputLayerCount)
+        {
+            an = new ActivationNetwork(new SigmoidFunction(), inputLayerCount, hiddenLayerCount, outputLayerCount);
+        }
+
+
+
         public void preLoad()
         {
             //this load files
@@ -23,10 +36,6 @@ namespace ANNProject
         {
             //this save files
         }
-
-
-        //variables
-        double LowestValue, HighestValue;
         
 
 
