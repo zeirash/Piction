@@ -43,20 +43,18 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 8);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(14, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 20);
+            this.label1.Size = new System.Drawing.Size(173, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "Add New Art";
             // 
             // btn_Back
             // 
             this.btn_Back.AutoSize = true;
-            this.btn_Back.Location = new System.Drawing.Point(325, 301);
-            this.btn_Back.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.btn_Back.Location = new System.Drawing.Point(488, 463);
             this.btn_Back.Name = "btn_Back";
-            this.btn_Back.Size = new System.Drawing.Size(32, 13);
+            this.btn_Back.Size = new System.Drawing.Size(45, 20);
             this.btn_Back.TabIndex = 1;
             this.btn_Back.TabStop = true;
             this.btn_Back.Text = "Back";
@@ -64,10 +62,9 @@
             // 
             // btn_SubmitArt
             // 
-            this.btn_SubmitArt.Location = new System.Drawing.Point(9, 270);
-            this.btn_SubmitArt.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_SubmitArt.Location = new System.Drawing.Point(14, 415);
             this.btn_SubmitArt.Name = "btn_SubmitArt";
-            this.btn_SubmitArt.Size = new System.Drawing.Size(347, 29);
+            this.btn_SubmitArt.Size = new System.Drawing.Size(520, 45);
             this.btn_SubmitArt.TabIndex = 2;
             this.btn_SubmitArt.Text = "Submit Art";
             this.btn_SubmitArt.UseVisualStyleBackColor = true;
@@ -76,10 +73,9 @@
             // txt_NewCategory
             // 
             this.txt_NewCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_NewCategory.Location = new System.Drawing.Point(9, 236);
-            this.txt_NewCategory.Margin = new System.Windows.Forms.Padding(2);
+            this.txt_NewCategory.Location = new System.Drawing.Point(14, 363);
             this.txt_NewCategory.Name = "txt_NewCategory";
-            this.txt_NewCategory.Size = new System.Drawing.Size(348, 26);
+            this.txt_NewCategory.Size = new System.Drawing.Size(520, 35);
             this.txt_NewCategory.TabIndex = 3;
             this.txt_NewCategory.Text = "New Category name";
             this.txt_NewCategory.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -87,10 +83,9 @@
             // btn_AddNew
             // 
             this.btn_AddNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_AddNew.Location = new System.Drawing.Point(9, 203);
-            this.btn_AddNew.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_AddNew.Location = new System.Drawing.Point(14, 312);
             this.btn_AddNew.Name = "btn_AddNew";
-            this.btn_AddNew.Size = new System.Drawing.Size(69, 29);
+            this.btn_AddNew.Size = new System.Drawing.Size(104, 45);
             this.btn_AddNew.TabIndex = 4;
             this.btn_AddNew.Text = "Add New";
             this.btn_AddNew.UseVisualStyleBackColor = true;
@@ -100,21 +95,19 @@
             // 
             this.cmb_Category.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmb_Category.FormattingEnabled = true;
-            this.cmb_Category.Location = new System.Drawing.Point(81, 203);
-            this.cmb_Category.Margin = new System.Windows.Forms.Padding(2);
+            this.cmb_Category.Location = new System.Drawing.Point(122, 312);
             this.cmb_Category.Name = "cmb_Category";
             this.cmb_Category.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cmb_Category.Size = new System.Drawing.Size(275, 24);
+            this.cmb_Category.Size = new System.Drawing.Size(410, 33);
             this.cmb_Category.TabIndex = 5;
             this.cmb_Category.Text = "Select Category";
             // 
             // listView_image
             // 
             this.listView_image.LargeImageList = this.imageList1;
-            this.listView_image.Location = new System.Drawing.Point(9, 31);
-            this.listView_image.Margin = new System.Windows.Forms.Padding(2);
+            this.listView_image.Location = new System.Drawing.Point(14, 48);
             this.listView_image.Name = "listView_image";
-            this.listView_image.Size = new System.Drawing.Size(348, 170);
+            this.listView_image.Size = new System.Drawing.Size(520, 259);
             this.listView_image.TabIndex = 6;
             this.listView_image.UseCompatibleStateImageBehavior = false;
             // 
@@ -126,9 +119,9 @@
             // 
             // AddArtForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 316);
+            this.ClientSize = new System.Drawing.Size(544, 486);
             this.Controls.Add(this.listView_image);
             this.Controls.Add(this.cmb_Category);
             this.Controls.Add(this.btn_AddNew);
@@ -136,7 +129,6 @@
             this.Controls.Add(this.btn_SubmitArt);
             this.Controls.Add(this.btn_Back);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AddArtForm";
             this.Text = "Add Art";
             this.Load += new System.EventHandler(this.AddArtForm_Load);

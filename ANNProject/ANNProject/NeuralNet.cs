@@ -4,28 +4,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using AForge.Imaging;
+using System.Drawing;
 using System.IO;
+
 using AForge.Neuro;
 using AForge.Neuro.Learning;
-
+using AForge.Imaging.Filters;
+using AForge.Imaging;
+using Accord.Imaging.Converters;
 
 namespace ANNProject
 {
     class NeuralNet
     {
-        //activations
-        ActivationNetwork an;
-        BackPropagationLearning bpl;
-        SOMLearning sml;
 
-
-        public void setActivationNetwork(int inputLayerCount, int hiddenLayerCount, int outputLayerCount)
+        public double [][] imageProcessing(String [] images)
         {
-            an = new ActivationNetwork(new SigmoidFunction(), inputLayerCount, hiddenLayerCount, outputLayerCount);
+            var imageToArray = new ImageToArray(min: -1, max: +1);
+            var toGrayscale = new Grayscale(0, 0, 0);
+            var goThreshold = new Threshold();
+            var reduceNoise = new AdditiveNoise();
+            var reScaling = new ResizeBicubic(10, 10);
+            double [][] processed = new double[images.Length][];
+
+            int i = 0;
+            foreach (String file in images)
+            {
+                var image = AForge.Imaging.Image.FromFile(file);
+                image = toGrayscale.Apply(image);
+                image = goThreshold.Apply(image);
+                image = reduceNoise.Apply(image);
+                image = reScaling.Apply(image);
+                imageToArray.Convert(image, out processed[i]);
+                i++;
+            }
+            return processed;
         }
-
-
 
         public void preLoad()
         {
