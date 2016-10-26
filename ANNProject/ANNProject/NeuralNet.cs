@@ -17,6 +17,8 @@ namespace ANNProject
 {
     class NeuralNet
     {
+        ActivationNetwork AN;
+        DistanceNetwork DN;
 
         public double [][] imageProcessing(String [] images)
         {
@@ -43,14 +45,74 @@ namespace ANNProject
             return processed;
         }
 
+        public double trainBPL(double [][] input, double [][] output)
+        {
+            int epoch = 10000;
+            double errorrate = 0;
+            double error = 0.0000001;
+
+            var bpl = new BackPropagationLearning(AN);
+
+            for (int i = 0; i < epoch; i++)
+            {
+                errorrate = bpl.RunEpoch(input,output);
+
+                if(error == errorrate)
+                {
+                    return errorrate;
+                }
+            }
+            return errorrate;
+        }
+
+        
+
+        public double trainSOM(double[][] input)
+        {
+            int epoch = 10000;
+            double errorrate = 0;
+            double error = 0.0000001;
+
+            var som = new SOMLearning(DN);
+
+            for (int i = 0; i < epoch; i++)
+            {
+                errorrate = som.RunEpoch(input);
+
+                if (error == errorrate)
+                {
+                    return errorrate;
+                }
+            }
+            return errorrate;
+        }
+
+        public void computeBPL()
+        {
+
+        }
+
+
         public void preLoad()
         {
             //this load files
+            try
+            {
+                AN = (ActivationNetwork) ActivationNetwork.Load("BPNNBrain.net");
+                DN = (DistanceNetwork)DistanceNetwork.Load("SOMBrain.net");
+            }
+            catch (Exception)
+            {
+                AN = new ActivationNetwork(new SigmoidFunction(), 100, 100, 1);
+                DN = new DistanceNetwork(100, 100);
+            }
         }
 
         public void preExit()
         {
             //this save files
+            AN.Save("BPNNBrain.net");
+            DN.Save("SOMBrain.net");
         }
         
 
