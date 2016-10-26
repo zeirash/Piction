@@ -17,6 +17,7 @@ namespace ANNProject
             InitializeComponent();
             cmb_Category.Visible = false;
             txt_NewCategory.Visible = false;
+            //btn_SubmitArt.Visible = false;
         }
 
         private void btn_AddNew_Click(object sender, EventArgs e)
@@ -55,7 +56,9 @@ namespace ANNProject
 
         private void btn_Back_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            MainMenuForm mainMenuForm = new MainMenuForm();
+            mainMenuForm.Show();
+            this.Dispose();
         }
 
         private void AddArtForm_Load(object sender, EventArgs e)

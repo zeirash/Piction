@@ -20,9 +20,11 @@ namespace ANNProject
 
         public double [][] imageProcessing(String [] images)
         {
+            BackPropagationLearning bpnn;
+            ActivationNetwork an;
             var imageToArray = new ImageToArray(min: -1, max: +1);
             var toGrayscale = new Grayscale(0, 0, 0);
-            var goThreshold = new Threshold();
+            var goThreshold = new Threshold(128);
             var reduceNoise = new AdditiveNoise();
             var reScaling = new ResizeBicubic(10, 10);
             double [][] processed = new double[images.Length][];
