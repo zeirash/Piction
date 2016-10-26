@@ -12,14 +12,19 @@ using AForge.Neuro.Learning;
 using AForge.Imaging.Filters;
 using AForge.Imaging;
 using Accord.Imaging.Converters;
+using Accord.Statistics.Analysis;
 
 namespace ANNProject
 {
     class NeuralNet
     {
-        ActivationNetwork AN;
-        DistanceNetwork DN;
+        ActivationNetwork an;
+        DistanceNetwork dn;
+        static int WIDTH = 10;
+        static int HEIGHT = 10;
+        PrincipalComponentAnalysis pca;
 
+        /*
         public double [][] imageProcessing(String [] images)
         {
             BackPropagationLearning bpnn;
@@ -43,6 +48,47 @@ namespace ANNProject
                 i++;
             }
             return processed;
+        }*/
+
+        public Bitmap preprocessing(Bitmap image)
+        {
+            Bitmap result = new Bitmap(image);
+            //Grayscaling
+            result = Grayscale.CommonAlgorithms.RMY.Apply(result);
+
+            //Detect edge
+            result = new HomogenityEdgeDetector().Apply(result);
+
+            //Reduce noise
+            int xMin, yMin, xMax, yMax;
+            xMin = image.Width; yMin = image.Height;
+            xMax = 0; yMax = 0;
+            for (int i = 0; i < image.Width; i++)
+            {
+                for (int j = 0; j < image.Height; j++)
+                {
+                    if (image.GetPixel(i, j).R > 128)
+                    {
+                        if (i < xMin) xMin = i;
+                        if (j < yMin) yMin = j;
+                        if (i > xMax) xMax = i;
+                        if (j > yMax) yMax = j;
+                    }
+                }
+            }
+            if (xMin == image.Width) xMin = 0;
+            if (yMin == image.Height) yMin = 0;
+            if (xMax == 0) xMax = image.Width;
+            if (yMax == 0) yMax = image.Height;
+
+            //Crop
+            Bitmap cropped = new Bitmap(xMax, yMax);
+            Graphics.FromImage(cropped).DrawImage(image, xMin, yMin, xMax, yMax);
+
+            //Resize
+            image = new ResizeBilinear(WIDTH, HEIGHT).Apply(image);
+
+            return image;
         }
 
         public double trainBPL(double [][] input, double [][] output)
@@ -51,7 +97,7 @@ namespace ANNProject
             double errorrate = 0;
             double error = 0.0000001;
 
-            var bpl = new BackPropagationLearning(AN);
+            var bpl = new BackPropagationLearning(an);
 
             for (int i = 0; i < epoch; i++)
             {
@@ -73,7 +119,7 @@ namespace ANNProject
             double errorrate = 0;
             double error = 0.0000001;
 
-            var som = new SOMLearning(DN);
+            var som = new SOMLearning(dn);
 
             for (int i = 0; i < epoch; i++)
             {
@@ -98,21 +144,21 @@ namespace ANNProject
             //this load files
             try
             {
-                AN = (ActivationNetwork) ActivationNetwork.Load("BPNNBrain.net");
-                DN = (DistanceNetwork)DistanceNetwork.Load("SOMBrain.net");
+                an = (ActivationNetwork) ActivationNetwork.Load("BPNNBrain.net");
+                dn = (DistanceNetwork)DistanceNetwork.Load("SOMBrain.net");
             }
             catch (Exception)
             {
-                AN = new ActivationNetwork(new SigmoidFunction(), 100, 100, 1);
-                DN = new DistanceNetwork(100, 100);
+                an = new ActivationNetwork(new SigmoidFunction(), 100, 100, 1);
+                dn = new DistanceNetwork(100, 100);
             }
         }
 
         public void preExit()
         {
             //this save files
-            AN.Save("BPNNBrain.net");
-            DN.Save("SOMBrain.net");
+            an.Save("BPNNBrain.net");
+            dn.Save("SOMBrain.net");
         }
         
 
