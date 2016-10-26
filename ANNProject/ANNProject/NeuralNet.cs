@@ -66,13 +66,13 @@ namespace ANNProject
 
             //Reduce noise
             int xMin, yMin, xMax, yMax;
-            xMin = image.Width; yMin = image.Height;
+            xMin = result.Width; yMin = result.Height;
             xMax = 0; yMax = 0;
-            for (int i = 0; i < image.Width; i++)
+            for (int i = 0; i < result.Width; i++)
             {
-                for (int j = 0; j < image.Height; j++)
+                for (int j = 0; j < result.Height; j++)
                 {
-                    if (image.GetPixel(i, j).R > 128)
+                    if (result.GetPixel(i, j).R > 128)
                     {
                         if (i < xMin) xMin = i;
                         if (j < yMin) yMin = j;
@@ -81,19 +81,19 @@ namespace ANNProject
                     }
                 }
             }
-            if (xMin == image.Width) xMin = 0;
-            if (yMin == image.Height) yMin = 0;
-            if (xMax == 0) xMax = image.Width;
-            if (yMax == 0) yMax = image.Height;
+            if (xMin == result.Width) xMin = 0;
+            if (yMin == result.Height) yMin = 0;
+            if (xMax == 0) xMax = result.Width;
+            if (yMax == 0) yMax = result.Height;
 
             //Crop
             Bitmap cropped = new Bitmap(xMax, yMax);
-            Graphics.FromImage(cropped).DrawImage(image, xMin, yMin, xMax, yMax);
+            Graphics.FromImage(cropped).DrawImage(result, xMin, yMin, xMax, yMax);
 
             //Resize
-            image = new ResizeBilinear(WIDTH, HEIGHT).Apply(image);
+            result = new ResizeBilinear(WIDTH, HEIGHT).Apply(result);
 
-            return image;
+            return result;
         }
 
         private double[] inputNormalization(Bitmap edited)
