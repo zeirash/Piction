@@ -23,6 +23,11 @@ namespace ANNProject
         static int WIDTH = 10;
         static int HEIGHT = 10;
         PrincipalComponentAnalysis pca;
+        List<double[]> listInput;
+        List<double[]> listOutput;
+        List<double[]> tempOutput;
+        List<String> listImageName;
+        BackPropagationLearning bpnn;
 
         /*
         public double [][] imageProcessing(String [] images)
@@ -91,17 +96,44 @@ namespace ANNProject
             return image;
         }
 
+        private double[] inputNormalization(Bitmap edited)
+        {
+            double[] inputNormal = new double[WIDTH * HEIGHT];
+
+            //normalization input
+            int index = 0;
+            for (int i = 0; i < edited.Width; i++)
+            {
+                for (int j = 0; j < edited.Height; j++)
+                {
+                    int input = edited.GetPixel(i, j).B / 255;
+                    inputNormal[index] = input;
+                    index++;
+                }
+
+            }
+
+
+            return inputNormal;
+        }
+
+        /*private void outputNormalization()
+        {
+            double[] output = new double[1];
+            output[0] = listInput.Count - 1;
+        }*/
+
         public double trainBPL(double [][] input, double [][] output)
         {
             int epoch = 10000;
             double errorrate = 0;
             double error = 0.0000001;
 
-            var bpl = new BackPropagationLearning(an);
+            bpnn = new BackPropagationLearning(an);
 
             for (int i = 0; i < epoch; i++)
             {
-                errorrate = bpl.RunEpoch(input,output);
+                errorrate = bpnn.RunEpoch(input,output);
 
                 if(error == errorrate)
                 {

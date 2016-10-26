@@ -21,8 +21,6 @@ C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.
 C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Math.xml
 C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Neuro.pdb
 C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Neuro.xml
-C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Statistics.pdb
-C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Statistics.xml
 C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Genetic.pdb
 C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Genetic.xml
 C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\obj\Debug\ANNProject.csprojResolveAssemblyReference.cache

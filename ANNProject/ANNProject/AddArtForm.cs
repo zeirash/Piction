@@ -12,12 +12,15 @@ namespace ANNProject
 {
     public partial class AddArtForm : Form
     {
+        List<String> listCategoryNames;
         public AddArtForm()
         {
             InitializeComponent();
-            cmb_Category.Visible = false;
+            cmb_Category.Enabled = false;
             txt_NewCategory.Visible = false;
-            //btn_SubmitArt.Visible = false;
+            btn_SubmitArt.Visible = false;
+           
+                
         }
 
         private void btn_AddNew_Click(object sender, EventArgs e)
@@ -42,8 +45,11 @@ namespace ANNProject
                     ListViewItem item = new ListViewItem(System.IO.Path.GetFileNameWithoutExtension(imageFileDialog.SafeFileNames[i]), i);
                     listView_image.Items.Add(item);
                 }
-                cmb_Category.Visible = true;
-                txt_NewCategory.Visible = true;
+                cmb_Category.Enabled = true;
+                cmb_Category.SelectedIndex = 0;
+                btn_SubmitArt.Visible = true;
+
+                
             }
 
             
@@ -51,7 +57,18 @@ namespace ANNProject
 
         private void btn_SubmitArt_Click(object sender, EventArgs e)
         {
-
+            if (txt_NewCategory.Visible)
+            {
+                if (txt_NewCategory.Text == "" | txt_NewCategory.Text == null)
+                    MessageBox.Show("Category must be filled");
+            }
+            else
+            {
+                if (txt_NewCategory.Visible)
+                    listCategoryNames.Add(txt_NewCategory.Text);
+                else
+                    listCategoryNames.Add(cmb_Category.SelectedItem.ToString());
+            }
         }
 
         private void btn_Back_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -64,6 +81,16 @@ namespace ANNProject
         private void AddArtForm_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void cmb_Category_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmb_Category.SelectedIndex == 0)
+            {
+                 txt_NewCategory.Visible = true;
+            }
+            else
+                txt_NewCategory.Visible = false;
         }
     }
 }
