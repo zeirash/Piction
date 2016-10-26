@@ -61,6 +61,9 @@ namespace ANNProject
             //Grayscaling
             result = Grayscale.CommonAlgorithms.RMY.Apply(result);
 
+            //threshold
+            result = new Threshold(128).Apply(result);
+
             //Detect edge
             result = new HomogenityEdgeDetector().Apply(result);
 
