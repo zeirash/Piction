@@ -10,7 +10,6 @@ using System.IO;
 using AForge.Neuro;
 using AForge.Neuro.Learning;
 using AForge.Imaging.Filters;
-using AForge.Imaging;
 using Accord.Imaging.Converters;
 using Accord.Statistics.Analysis;
 
@@ -30,6 +29,8 @@ namespace ANNProject
         public List<String> listCategoryNames;
         List<double[]> data_simpanan = new List<double[]>();
         BackPropagationLearning bpnn;
+        List<string> category = new List<string>;
+
 
         public Bitmap preprocessing(Bitmap image)
         {
@@ -96,11 +97,6 @@ namespace ANNProject
             return inputNormal;
         }
 
-        /*private void outputNormalization()
-        {
-            double[] output = new double[1];
-            output[0] = listInput.Count - 1;
-        }*/
 
         public void convertImageToArray(Bitmap image)
         {
@@ -160,8 +156,20 @@ namespace ANNProject
             return errorrate;
         }
 
-        public void computeBPL()
+        public void computeBPL(Bitmap image)
         {
+            Bitmap processedImage = preprocessing(image);
+            double[] imageData = inputNormalization(processedImage);
+
+            an.Compute(imageData);
+
+
+        }
+
+        public void computeSOM(Bitmap image)
+        {
+            pca.Compute();
+
 
         }
 
