@@ -10,7 +10,6 @@ using System.IO;
 using AForge.Neuro;
 using AForge.Neuro.Learning;
 using AForge.Imaging.Filters;
-using AForge.Imaging;
 using Accord.Imaging.Converters;
 using Accord.Statistics.Analysis;
 
@@ -28,32 +27,8 @@ namespace ANNProject
         List<double[]> tempOutput;
         List<String> listImageName;
         BackPropagationLearning bpnn;
+        List<string> category = new List<string>;
 
-        /*
-        public double [][] imageProcessing(String [] images)
-        {
-            BackPropagationLearning bpnn;
-            ActivationNetwork an;
-            var imageToArray = new ImageToArray(min: -1, max: +1);
-            var toGrayscale = new Grayscale(0, 0, 0);
-            var goThreshold = new Threshold(128);
-            var reduceNoise = new AdditiveNoise();
-            var reScaling = new ResizeBicubic(10, 10);
-            double [][] processed = new double[images.Length][];
-
-            int i = 0;
-            foreach (String file in images)
-            {
-                var image = AForge.Imaging.Image.FromFile(file);
-                image = toGrayscale.Apply(image);
-                image = goThreshold.Apply(image);
-                image = reduceNoise.Apply(image);
-                image = reScaling.Apply(image);
-                imageToArray.Convert(image, out processed[i]);
-                i++;
-            }
-            return processed;
-        }*/
 
         public Bitmap preprocessing(Bitmap image)
         {
@@ -120,11 +95,6 @@ namespace ANNProject
             return inputNormal;
         }
 
-        /*private void outputNormalization()
-        {
-            double[] output = new double[1];
-            output[0] = listInput.Count - 1;
-        }*/
 
         public double trainBPL(double [][] input, double [][] output)
         {
@@ -168,8 +138,20 @@ namespace ANNProject
             return errorrate;
         }
 
-        public void computeBPL()
+        public void computeBPL(Bitmap image)
         {
+            Bitmap processedImage = preprocessing(image);
+            double[] imageData = inputNormalization(processedImage);
+
+            an.Compute(imageData);
+
+
+        }
+
+        public void computeSOM(Bitmap image)
+        {
+            pca.Compute();
+
 
         }
 
