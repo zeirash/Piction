@@ -12,7 +12,7 @@ namespace ANNProject
 {
     public partial class AddArtForm : Form
     {
-        List<String> listCategoryNames;
+        NeuralNet neuralnet;
         public AddArtForm()
         {
             InitializeComponent();
@@ -44,11 +44,16 @@ namespace ANNProject
                     imageList1.Images.Add(image);
                     ListViewItem item = new ListViewItem(System.IO.Path.GetFileNameWithoutExtension(imageFileDialog.SafeFileNames[i]), i);
                     listView_image.Items.Add(item);
+
+                    //process image
+                    image = neuralnet.preprocessing(image);
+                    //convert image to array
+                    neuralnet.convertImageToArray(image);
                 }
                 cmb_Category.Enabled = true;
                 cmb_Category.SelectedIndex = 0;
                 btn_SubmitArt.Visible = true;
-
+                neuralnet.computePCA();
                 
             }
 
@@ -65,9 +70,9 @@ namespace ANNProject
             else
             {
                 if (txt_NewCategory.Visible)
-                    listCategoryNames.Add(txt_NewCategory.Text);
+                    neuralnet.listCategoryNames.Add(txt_NewCategory.Text);
                 else
-                    listCategoryNames.Add(cmb_Category.SelectedItem.ToString());
+                    neuralnet.listCategoryNames.Add(cmb_Category.SelectedItem.ToString());
             }
         }
 

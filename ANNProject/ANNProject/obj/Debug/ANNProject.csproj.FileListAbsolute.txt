@@ -9,7 +9,6 @@ C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.
 C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.MachineLearning.dll
 C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Math.dll
 C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Neuro.dll
-C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Statistics.dll
 C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Genetic.dll
 C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.pdb
 C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.xml
