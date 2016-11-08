@@ -57,6 +57,8 @@ namespace ANNProject
             return processed;
         }*/
 
+        public NeuralNet() { }
+
         public Bitmap preprocessing(Bitmap image)
         {
             Bitmap result = new Bitmap(image);
