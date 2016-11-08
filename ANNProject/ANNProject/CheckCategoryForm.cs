@@ -12,6 +12,8 @@ namespace ANNProject
 {
     public partial class CheckCategoryForm : Form
     {
+
+        NeuralNet neuralnet;
         public CheckCategoryForm()
         {
             InitializeComponent();
@@ -22,8 +24,32 @@ namespace ANNProject
         {
             String CategoryName = "";
 
-            lbl_Category.Text = CategoryName;
-            lbl_Category.Visible = true;
+            //open file dialog
+            OpenFileDialog imageFileDialog = new OpenFileDialog();
+            imageFileDialog.Title = "Select image";
+            imageFileDialog.Filter = "Image File(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            DialogResult result = imageFileDialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                Bitmap image = new Bitmap(imageFileDialog.FileName);
+                neuralnet.computeBPL(image);
+                image = neuralnet.preprocessing(image);
+                pictureBox1.Image = new Bitmap(image);
+
+                
+
+
+                lbl_Category.Text = CategoryName;
+                lbl_Category.Visible = true;
+            }
+        }
+
+        private void btn_Back_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MainMenuForm mainMenuForm = new MainMenuForm();
+            mainMenuForm.Show();
+            this.Dispose();
         }
     }
 }

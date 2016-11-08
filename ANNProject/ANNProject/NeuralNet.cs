@@ -164,6 +164,8 @@ namespace ANNProject
             an.Compute(imageData);
 
 
+
+
         }
 
         public void computeSOM(Bitmap image)
