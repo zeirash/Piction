@@ -17,19 +17,20 @@ namespace ANNProject
 {
     class NeuralNet
     {
-        ActivationNetwork an;
-        DistanceNetwork dn;
         static int WIDTH = 10;
         static int HEIGHT = 10;
+
+        ActivationNetwork an;
+        DistanceNetwork dn;
+        BackPropagationLearning bpnn;
         PrincipalComponentAnalysis pca;
+
         List<double[]> listInput;
         List<double[]> listOutput;
         List<double[]> tempOutput;
-        List<String> listImageName;
-        public List<String> listCategoryNames;
+        List<String> listImageName = new List<String>();
+        List<String> listCategoryNames = new List<String>();
         List<double[]> data_simpanan = new List<double[]>();
-        BackPropagationLearning bpnn;
-        List<string> category = new List<string>;
 
 
         public Bitmap preprocessing(Bitmap image)
