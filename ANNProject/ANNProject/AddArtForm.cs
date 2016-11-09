@@ -12,7 +12,7 @@ namespace ANNProject
 {
     public partial class AddArtForm : Form
     {
-        NeuralNet neuralnet;
+        NeuralNet neuralnet = new NeuralNet();
         public AddArtForm()
         {
             InitializeComponent();

@@ -39,18 +39,21 @@
             // btn_Back
             // 
             this.btn_Back.AutoSize = true;
-            this.btn_Back.Location = new System.Drawing.Point(114, 358);
+            this.btn_Back.Location = new System.Drawing.Point(76, 233);
+            this.btn_Back.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.btn_Back.Name = "btn_Back";
-            this.btn_Back.Size = new System.Drawing.Size(45, 20);
+            this.btn_Back.Size = new System.Drawing.Size(32, 13);
             this.btn_Back.TabIndex = 0;
             this.btn_Back.TabStop = true;
             this.btn_Back.Text = "Back";
+            this.btn_Back.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btn_Back_LinkClicked);
             // 
             // btn_CheckCaegory
             // 
-            this.btn_CheckCaegory.Location = new System.Drawing.Point(12, 228);
+            this.btn_CheckCaegory.Location = new System.Drawing.Point(8, 148);
+            this.btn_CheckCaegory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_CheckCaegory.Name = "btn_CheckCaegory";
-            this.btn_CheckCaegory.Size = new System.Drawing.Size(253, 36);
+            this.btn_CheckCaegory.Size = new System.Drawing.Size(169, 23);
             this.btn_CheckCaegory.TabIndex = 1;
             this.btn_CheckCaegory.Text = "Add Art";
             this.btn_CheckCaegory.UseVisualStyleBackColor = true;
@@ -58,41 +61,45 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(13, 13);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 8);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(253, 209);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.Size = new System.Drawing.Size(169, 136);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
             // lbl_CategoryHeader
             // 
             this.lbl_CategoryHeader.AutoSize = true;
-            this.lbl_CategoryHeader.Location = new System.Drawing.Point(13, 271);
+            this.lbl_CategoryHeader.Location = new System.Drawing.Point(9, 176);
+            this.lbl_CategoryHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_CategoryHeader.Name = "lbl_CategoryHeader";
-            this.lbl_CategoryHeader.Size = new System.Drawing.Size(77, 20);
+            this.lbl_CategoryHeader.Size = new System.Drawing.Size(52, 13);
             this.lbl_CategoryHeader.TabIndex = 3;
             this.lbl_CategoryHeader.Text = "Category:";
             // 
             // lbl_Category
             // 
             this.lbl_Category.AutoSize = true;
-            this.lbl_Category.Location = new System.Drawing.Point(12, 295);
+            this.lbl_Category.Location = new System.Drawing.Point(8, 192);
+            this.lbl_Category.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Category.Name = "lbl_Category";
-            this.lbl_Category.Size = new System.Drawing.Size(104, 20);
+            this.lbl_Category.Size = new System.Drawing.Size(71, 13);
             this.lbl_Category.TabIndex = 4;
             this.lbl_Category.Text = "The Category";
             // 
             // CheckCategoryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(278, 391);
+            this.ClientSize = new System.Drawing.Size(185, 254);
             this.Controls.Add(this.lbl_Category);
             this.Controls.Add(this.lbl_CategoryHeader);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btn_CheckCaegory);
             this.Controls.Add(this.btn_Back);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "CheckCategoryForm";
             this.Text = "Check Category";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
