@@ -54,7 +54,7 @@ namespace ANNProject
                 cmb_Category.SelectedIndex = 0;
                 btn_SubmitArt.Visible = true;
                 neuralnet.computePCA();
-                
+                neuralnet.trainSOM(imageFileDialog.FileNames.Count());
             }
 
             

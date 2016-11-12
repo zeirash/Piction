@@ -19,18 +19,22 @@ namespace ANNProject
     {
         static int WIDTH = 10;
         static int HEIGHT = 10;
+        static int NEURON_COUNT = 10;
 
         ActivationNetwork an;
         DistanceNetwork dn;
         BackPropagationLearning bpnn;
         PrincipalComponentAnalysis pca;
+        SOMLearning som;
 
         List<double[]> listInput;
         List<double[]> listOutput;
-        List<double[]> tempOutput;
+        List<double[]> tempOutput = new List<double[]>();
         List<String> listImageName = new List<String>();
-        List<String> listCategoryNames = new List<String>();
+        public List<String> listCategoryNames = new List<String>();
         List<double[]> data_simpanan = new List<double[]>();
+
+        double[][] inputPCA;
 
 
         public Bitmap preprocessing(Bitmap image)
@@ -97,6 +101,23 @@ namespace ANNProject
 
             return inputNormal;
         }
+        //masih gk tau bener ato kgk/perlu or kgk
+        public void doOuputNormalization(int totalInput)
+        {
+            double[] output = new double[1];
+            output[0] = totalInput - 1;
+            tempOutput.Add(output);
+
+            //normalization output
+            listOutput = new List<double[]>();
+            for (int i = 0; i < tempOutput.Count(); i++)
+            {
+                double[] outputNormal = new double[1];
+                //aneh kenapa tempOutput array 2d padahal di intialize cuma 1
+                outputNormal[0] = tempOutput[i][0] / (double)tempOutput.Count();
+                listOutput.Add(outputNormal);
+            }
+        }
 
 
         public void convertImageToArray(Bitmap image)
@@ -110,9 +131,40 @@ namespace ANNProject
 
         public void computePCA()
         {
-            //hitung pca
+            //calculate pca
             pca = new PrincipalComponentAnalysis(data_simpanan.ToArray());
             pca.Compute();
+
+            //input pca compute result to array
+            inputPCA = new double[pca.Result.GetLength(0)][];
+
+            for (int i = 0; i < pca.Result.GetLength(0); i++)
+            {
+                inputPCA[i] = new double[pca.Result.GetLength(0)];
+                for (int j = 0; j < pca.Result.GetLength(1); j++)
+                {
+                    inputPCA[i][j] = pca.Result[i, j];
+                }
+            }
+        }
+
+        public void trainSOM(int total_input)
+        {
+            int epoch = 10000;
+            double errorrate = 0;
+            double minerror = 0.0000001;
+
+            dn = new DistanceNetwork(total_input, NEURON_COUNT);
+            som = new SOMLearning(dn);
+
+            //train som
+            for (int i = 0; i < epoch; i++)
+            {
+                errorrate = som.RunEpoch(inputPCA);
+
+                if (errorrate < minerror)
+                    break;
+            }
         }
 
         public double trainBPL(double [][] input, double [][] output)
@@ -125,31 +177,9 @@ namespace ANNProject
 
             for (int i = 0; i < epoch; i++)
             {
-                errorrate = bpnn.RunEpoch(input,output);
+                errorrate = bpnn.RunEpoch(input, output);
 
                 if(error == errorrate)
-                {
-                    return errorrate;
-                }
-            }
-            return errorrate;
-        }
-
-        
-
-        public double trainSOM(double[][] input)
-        {
-            int epoch = 10000;
-            double errorrate = 0;
-            double error = 0.0000001;
-
-            var som = new SOMLearning(dn);
-
-            for (int i = 0; i < epoch; i++)
-            {
-                errorrate = som.RunEpoch(input);
-
-                if (error == errorrate)
                 {
                     return errorrate;
                 }
