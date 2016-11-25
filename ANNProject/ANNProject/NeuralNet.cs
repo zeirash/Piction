@@ -19,7 +19,7 @@ namespace ANNProject
     {
         static int WIDTH = 10;
         static int HEIGHT = 10;
-        static int NEURON_COUNT = 10;
+        private int NEURON_COUNT = 0;
 
         ActivationNetwork an;
         DistanceNetwork dn;
@@ -113,7 +113,6 @@ namespace ANNProject
             for (int i = 0; i < tempOutput.Count(); i++)
             {
                 double[] outputNormal = new double[1];
-                //aneh kenapa tempOutput array 2d padahal di intialize cuma 1
                 outputNormal[0] = tempOutput[i][0] / (double)tempOutput.Count();
                 listOutput.Add(outputNormal);
             }
@@ -153,6 +152,15 @@ namespace ANNProject
             int epoch = 10000;
             double errorrate = 0;
             double minerror = 0.0000001;
+            int neuronSquared = 1;
+            NEURON_COUNT = neuronSquared;
+
+            while (total_input <= NEURON_COUNT)
+            {
+                neuronSquared++;
+                NEURON_COUNT = neuronSquared ^ 2;
+
+            }
 
             dn = new DistanceNetwork(total_input, NEURON_COUNT);
             som = new SOMLearning(dn);
@@ -199,7 +207,7 @@ namespace ANNProject
 
         }
 
-        public void computeSOM(Bitmap image)
+        public void computeSOM()
         {
             pca.Compute();
 
