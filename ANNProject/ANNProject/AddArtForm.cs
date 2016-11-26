@@ -13,20 +13,18 @@ namespace ANNProject
     public partial class AddArtForm : Form
     {
         NeuralNet neuralnet = new NeuralNet();
+        OpenFileDialog imageFileDialog = new OpenFileDialog();
         public AddArtForm()
         {
             InitializeComponent();
             cmb_Category.Enabled = false;
             txt_NewCategory.Visible = false;
-            btn_SubmitArt.Visible = false;
-           
-                
+            btn_SubmitArt.Visible = false;               
         }
 
         private void btn_AddNew_Click(object sender, EventArgs e)
         {
             //open file dialog
-            OpenFileDialog imageFileDialog = new OpenFileDialog();
             imageFileDialog.Title = "Select image";
             imageFileDialog.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
             imageFileDialog.Multiselect = true;
@@ -45,6 +43,8 @@ namespace ANNProject
                     ListViewItem item = new ListViewItem(System.IO.Path.GetFileNameWithoutExtension(imageFileDialog.SafeFileNames[i]), i);
                     listView_image.Items.Add(item);
 
+                    //save picture
+
                     //process image
                     image = neuralnet.preprocessing(image);
                     //convert image to array
@@ -53,8 +53,8 @@ namespace ANNProject
                 cmb_Category.Enabled = true;
                 cmb_Category.SelectedIndex = 0;
                 btn_SubmitArt.Visible = true;
-                neuralnet.computePCA();
-                neuralnet.trainSOM(imageFileDialog.FileNames.Count());
+                //neuralnet.computePCA();
+                //neuralnet.trainSOM(imageFileDialog.FileNames.Count());
             }
 
             
@@ -72,7 +72,11 @@ namespace ANNProject
                 if (txt_NewCategory.Visible)
                     neuralnet.listCategoryNames.Add(txt_NewCategory.Text);
                 else
+                {
                     neuralnet.listCategoryNames.Add(cmb_Category.SelectedItem.ToString());
+                    neuralnet.computePCA();
+                    neuralnet.trainSOM(imageFileDialog.FileNames.Count());
+                }
             }
         }
 
