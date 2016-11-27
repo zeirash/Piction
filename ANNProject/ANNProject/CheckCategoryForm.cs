@@ -13,30 +13,32 @@ namespace ANNProject
     public partial class CheckCategoryForm : Form
     {
         int flag = 0;
-        NeuralNet neuralnet;
+        NeuralNet neuralnet = new NeuralNet();
+        Bitmap image, edited;
         public CheckCategoryForm()
         {
             InitializeComponent();
             lbl_Category.Visible = false;
-
         }
 
         private void btn_AddCheckArtCategory_Click(object sender, EventArgs e)
         {
             
-            Bitmap image =new Bitmap(pictureBox1.Image);
-            if (flag==1)
+            //image = new Bitmap(pictureBox1.Image);
+            if (flag == 1)
             {
-                Bitmap edited = new Bitmap(image);
+                edited = new Bitmap(image);
                 String CategoryName = "";
+                //preprocess the image
                 edited = neuralnet.preprocessing(edited);
                 neuralnet.computeBPL(edited);
+                MessageBox.Show("Predicting category success");
                 pictureBox1.Image = new Bitmap(edited);
 
                 lbl_Category.Text = CategoryName;
                 lbl_Category.Visible = true;
                 flag = 2;
-            }else if(flag==2){
+            }else if(flag == 2){
 
                 ArtDetail artDetail = new ArtDetail(image);
                 artDetail.Show();
@@ -44,7 +46,6 @@ namespace ANNProject
             }
             else
             {
-
 
                 //open file dialog
                 OpenFileDialog imageFileDialog = new OpenFileDialog();

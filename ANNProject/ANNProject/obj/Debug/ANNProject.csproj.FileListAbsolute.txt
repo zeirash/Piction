@@ -61,3 +61,4 @@ C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\obj\Debug\ANNProject
 C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\obj\Debug\ANNProject.MainMenuForm.resources
 C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\obj\Debug\ANNProject.Properties.Resources.resources
 C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\obj\Debug\ANNProject.csproj.GenerateResource.Cache
+C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\obj\Debug\ANNProject.ArtDetail.resources

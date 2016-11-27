@@ -27,15 +27,20 @@ namespace ANNProject
         PrincipalComponentAnalysis pca;
         SOMLearning som;
 
-        List<double[]> listInput;
-        List<double[]> listOutput;
+        public List<double[]> listInput;
+        public List<double[]> listOutput;
         List<double[]> tempOutput = new List<double[]>();
         List<String> listImageName = new List<String>();
         public List<String> listCategoryNames = new List<String>();
-        List<double[]> data_simpanan = new List<double[]>();
+        List<double[]> temp_data = new List<double[]>();
 
         double[][] inputPCA;
 
+        public NeuralNet()
+        {
+            an = new ActivationNetwork(new SigmoidFunction(), WIDTH * HEIGHT, 8, 1);
+            bpnn = new BackPropagationLearning(an);
+        }
 
         public Bitmap preprocessing(Bitmap image)
         {
@@ -81,7 +86,7 @@ namespace ANNProject
             return result;
         }
 
-        private double[] inputNormalization(Bitmap edited)
+        public double[] inputNormalization(Bitmap edited)
         {
             double[] inputNormal = new double[WIDTH * HEIGHT];
 
@@ -102,7 +107,7 @@ namespace ANNProject
             return inputNormal;
         }
         //masih gk tau bener ato kgk/perlu or kgk
-        public void doOuputNormalization(int totalInput)
+        public void ouputNormalization(int totalInput)
         {
             double[] output = new double[1];
             output[0] = totalInput - 1;
@@ -125,13 +130,13 @@ namespace ANNProject
             ImageToArray array_converter = new ImageToArray(min: 0, max: 1);
             double[] data;
             array_converter.Convert(image, out data);
-            data_simpanan.Add(data);
+            temp_data.Add(data);
         }
 
         public void computePCA()
         {
             //calculate pca
-            pca = new PrincipalComponentAnalysis(data_simpanan.ToArray());
+            pca = new PrincipalComponentAnalysis(temp_data.ToArray());
             pca.Compute();
 
             //input pca compute result to array
@@ -181,7 +186,8 @@ namespace ANNProject
             double errorrate = 0;
             double error = 0.0000001;
 
-            bpnn = new BackPropagationLearning(an);
+            //an = new ActivationNetwork(new SigmoidFunction(), WIDTH * HEIGHT, 8, 1);
+            //bpnn = new BackPropagationLearning(an);
 
             for (int i = 0; i < epoch; i++)
             {
@@ -197,13 +203,13 @@ namespace ANNProject
 
         public void computeBPL(Bitmap image)
         {
+            //an = new ActivationNetwork(new SigmoidFunction(), WIDTH * HEIGHT, 8, 1);
+            //bpnn = new BackPropagationLearning(an);
+
             Bitmap processedImage = preprocessing(image);
             double[] imageData = inputNormalization(processedImage);
 
             an.Compute(imageData);
-
-
-
 
         }
 

@@ -51,7 +51,7 @@
             // btn_CheckCaegory
             // 
             this.btn_CheckCaegory.Location = new System.Drawing.Point(8, 148);
-            this.btn_CheckCaegory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_CheckCaegory.Margin = new System.Windows.Forms.Padding(2);
             this.btn_CheckCaegory.Name = "btn_CheckCaegory";
             this.btn_CheckCaegory.Size = new System.Drawing.Size(169, 23);
             this.btn_CheckCaegory.TabIndex = 1;
@@ -62,10 +62,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(9, 8);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(169, 136);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
@@ -99,7 +99,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btn_CheckCaegory);
             this.Controls.Add(this.btn_Back);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CheckCategoryForm";
             this.Text = "Check Category";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

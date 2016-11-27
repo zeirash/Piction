@@ -45,10 +45,12 @@ namespace ANNProject
 
                     //save picture
 
-                    //process image
+                    //preprocess image
                     image = neuralnet.preprocessing(image);
+                    //add to listinput
+                    neuralnet.listInput.Add(neuralnet.inputNormalization(image));
                     //convert image to array
-                    neuralnet.convertImageToArray(image);
+                    //neuralnet.convertImageToArray(image);
                 }
                 cmb_Category.Enabled = true;
                 cmb_Category.SelectedIndex = 0;
@@ -74,8 +76,12 @@ namespace ANNProject
                 else
                 {
                     neuralnet.listCategoryNames.Add(cmb_Category.SelectedItem.ToString());
-                    neuralnet.computePCA();
-                    neuralnet.trainSOM(imageFileDialog.FileNames.Count());
+                    //ini yg outputnormalization taro disini atau didalam loop image
+                    neuralnet.ouputNormalization(imageFileDialog.FileNames.Count());
+                    neuralnet.trainBPL(neuralnet.listInput.ToArray(), neuralnet.listOutput.ToArray());
+                    MessageBox.Show("Art submitted");
+                    //neuralnet.computePCA();
+                    //neuralnet.trainSOM(imageFileDialog.FileNames.Count());
                 }
             }
         }
