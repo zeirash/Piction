@@ -12,8 +12,8 @@ namespace ANNProject
 {
     public partial class MainMenuForm : Form
     {
-      
 
+        NeuralNet neuralNet = new NeuralNet();
         public MainMenuForm()
         {
             InitializeComponent();
@@ -40,8 +40,18 @@ namespace ANNProject
         private void btn_Browse_Click(object sender, EventArgs e)
         {
             //check if there is art in the system
-
+            if (neuralNet.listInput == null || !neuralNet.listInput.Any())
+            {
+                MessageBox.Show("Add some art first!");
+            }
             //go to browse art form
+            else
+            {
+                BrowseArtForm browseArtForm = new BrowseArtForm();
+                browseArtForm.Show();
+                this.Hide();
+            }
+            
         }
 
         private void lbl_Exit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

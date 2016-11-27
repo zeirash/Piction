@@ -29,15 +29,22 @@ namespace ANNProject
 
         public List<double[]> listInput;
         public List<double[]> listOutput;
-        List<double[]> tempOutput = new List<double[]>();
-        List<String> listImageName = new List<String>();
-        public List<String> listCategoryNames = new List<String>();
-        List<double[]> temp_data = new List<double[]>();
+        List<double[]> tempOutput;
+        List<String> listImageName;
+        public List<String> listCategoryNames;
+        List<double[]> temp_data;
 
         double[][] inputPCA;
 
         public NeuralNet()
         {
+            listInput = new List<double[]>();
+            listOutput = new List<double[]>();
+            tempOutput = new List<double[]>();
+            listImageName = new List<String>();
+            listCategoryNames = new List<String>();
+            temp_data = new List<double[]>();
+
             an = new ActivationNetwork(new SigmoidFunction(), WIDTH * HEIGHT, 8, 1);
             bpnn = new BackPropagationLearning(an);
         }

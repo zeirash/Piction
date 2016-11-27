@@ -14,6 +14,7 @@ namespace ANNProject
     {
         NeuralNet neuralnet = new NeuralNet();
         OpenFileDialog imageFileDialog = new OpenFileDialog();
+        string category;
         public AddArtForm()
         {
             InitializeComponent();
@@ -43,14 +44,13 @@ namespace ANNProject
                     ListViewItem item = new ListViewItem(System.IO.Path.GetFileNameWithoutExtension(imageFileDialog.SafeFileNames[i]), i);
                     listView_image.Items.Add(item);
 
-                    //save picture
-
                     //preprocess image
                     image = neuralnet.preprocessing(image);
                     //add to listinput
                     neuralnet.listInput.Add(neuralnet.inputNormalization(image));
                     //convert image to array
                     //neuralnet.convertImageToArray(image);
+                    //add image to list image
                 }
                 cmb_Category.Enabled = true;
                 cmb_Category.SelectedIndex = 0;
@@ -72,17 +72,27 @@ namespace ANNProject
             else
             {
                 if (txt_NewCategory.Visible)
-                    neuralnet.listCategoryNames.Add(txt_NewCategory.Text);
+                {
+                    category = txt_NewCategory.Text;
+                    neuralnet.listCategoryNames.Add(category);
+                }
                 else
                 {
-                    neuralnet.listCategoryNames.Add(cmb_Category.SelectedItem.ToString());
-                    //ini yg outputnormalization taro disini atau didalam loop image
-                    neuralnet.ouputNormalization(imageFileDialog.FileNames.Count());
-                    neuralnet.trainBPL(neuralnet.listInput.ToArray(), neuralnet.listOutput.ToArray());
-                    MessageBox.Show("Art submitted");
-                    //neuralnet.computePCA();
-                    //neuralnet.trainSOM(imageFileDialog.FileNames.Count());
+                    category = cmb_Category.SelectedItem.ToString();
+                    neuralnet.listCategoryNames.Add(category);
                 }
+                //save picture
+                /*
+                for (int i = 0; i < imageFileDialog.FileNames.Count(); i++) {
+                    System.IO.File.Copy(imageFileDialog.FileNames[i], @"D:\" + category + @"\"+imageFileDialog.SafeFileNames[i]);
+                }
+                */
+                //ini yg outputnormalization taro disini atau didalam loop image
+                //neuralnet.ouputNormalization(imageFileDialog.FileNames.Count());
+                neuralnet.trainBPL(neuralnet.listInput.ToArray(), neuralnet.listOutput.ToArray());
+                MessageBox.Show("Art submitted");
+                //neuralnet.computePCA();
+                //neuralnet.trainSOM(imageFileDialog.FileNames.Count());
             }
         }
 
