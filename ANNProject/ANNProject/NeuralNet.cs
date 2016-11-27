@@ -180,7 +180,7 @@ namespace ANNProject
             }
         }
 
-        public double trainBPL(double [][] input, double [][] output)
+        public void trainBPL(double [][] input, double [][] output)
         {
             int epoch = 10000;
             double errorrate = 0;
@@ -193,12 +193,12 @@ namespace ANNProject
             {
                 errorrate = bpnn.RunEpoch(input, output);
 
-                if(error == errorrate)
+                /*if(error == errorrate)
                 {
                     return errorrate;
-                }
+                }*/
             }
-            return errorrate;
+            //return errorrate;
         }
 
         public void computeBPL(Bitmap image)
