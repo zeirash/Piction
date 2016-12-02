@@ -35,6 +35,7 @@ namespace ANNProject
         List<double[]> temp_data;
 
         double[][] inputPCA;
+        public bool isEmpty = true;
 
         public NeuralNet()
         {
