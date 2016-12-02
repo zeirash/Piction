@@ -168,7 +168,8 @@ namespace ANNProject
             int neuronSquared = 1;
             NEURON_COUNT = neuronSquared;
 
-            while (total_input <= NEURON_COUNT)
+            //check Neuron is quadratically more then input
+            while (total_input > NEURON_COUNT)
             {
                 neuronSquared++;
                 NEURON_COUNT = neuronSquared ^ 2;
@@ -188,31 +189,31 @@ namespace ANNProject
             }
         }
 
-        public void trainBPL(double [][] input, double [][] output)
+        public double trainBPL(double [][] input, double [][] output)
         {
             int epoch = 10000;
             double errorrate = 0;
             double error = 0.0000001;
 
-            //an = new ActivationNetwork(new SigmoidFunction(), WIDTH * HEIGHT, 8, 1);
-            //bpnn = new BackPropagationLearning(an);
+            an = new ActivationNetwork(new SigmoidFunction(), WIDTH * HEIGHT, 8, 1);
+            bpnn = new BackPropagationLearning(an);
 
             for (int i = 0; i < epoch; i++)
             {
                 errorrate = bpnn.RunEpoch(input, output);
 
-                /*if(error == errorrate)
+                 if(error == errorrate)
                 {
                     return errorrate;
-                }*/
+                }
             }
-            //return errorrate;
+            return errorrate;
         }
 
         public void computeBPL(Bitmap image)
         {
-            //an = new ActivationNetwork(new SigmoidFunction(), WIDTH * HEIGHT, 8, 1);
-            //bpnn = new BackPropagationLearning(an);
+            an = new ActivationNetwork(new SigmoidFunction(), WIDTH * HEIGHT, 8, 1);
+            bpnn = new BackPropagationLearning(an);
 
             Bitmap processedImage = preprocessing(image);
             double[] imageData = inputNormalization(processedImage);
