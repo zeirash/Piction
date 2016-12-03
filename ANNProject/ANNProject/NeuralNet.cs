@@ -221,14 +221,6 @@ namespace ANNProject
 
         }
 
-        public void computeSOM()
-        {
-            pca.Compute();
-
-
-        }
-
-
         public void preLoad()
         {
             //this load files
