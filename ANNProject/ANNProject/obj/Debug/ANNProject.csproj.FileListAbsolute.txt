@@ -38,7 +38,6 @@ C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Ima
 C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.MachineLearning.dll
 C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Math.dll
 C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Neuro.dll
-C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Statistics.dll
 C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Genetic.dll
 C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.pdb
 C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.xml
@@ -50,8 +49,6 @@ C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Mat
 C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Math.xml
 C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Neuro.pdb
 C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Neuro.xml
-C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Statistics.pdb
-C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Statistics.xml
 C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Genetic.pdb
 C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\bin\Debug\Accord.Genetic.xml
 C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\obj\Debug\ANNProject.csprojResolveAssemblyReference.cache
@@ -62,3 +59,4 @@ C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\obj\Debug\ANNProject
 C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\obj\Debug\ANNProject.Properties.Resources.resources
 C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\obj\Debug\ANNProject.csproj.GenerateResource.Cache
 C:\Users\Tiffany\Source\Repos\ANNProject\ANNProject\ANNProject\obj\Debug\ANNProject.ArtDetail.resources
+C:\Users\USER\Source\Repos\ANNProject\ANNProject\ANNProject\obj\Debug\ANNProject.ArtDetail.resources

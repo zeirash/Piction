@@ -46,14 +46,17 @@ namespace ANNProject
 
                     //preprocess image
                     image = neuralnet.preprocessing(image);
+
                     //add to listinput
                     //neuralnet.listInput.Add(neuralnet.inputNormalization(image));
+
                     //convert image to array and add to list tempdata
                     neuralnet.convertImageToArray(image);
                 }
                 cmb_Category.Enabled = true;
                 cmb_Category.SelectedIndex = 0;
                 btn_SubmitArt.Visible = true;
+
                 //neuralnet.computePCA();
                 //neuralnet.trainSOM(imageFileDialog.FileNames.Count());
             }
@@ -80,12 +83,13 @@ namespace ANNProject
                     category = cmb_Category.SelectedItem.ToString();
                     neuralnet.listCategoryNames.Add(category);
                 }
-                //save picture
+                //save picture to folder
                 /*
                 for (int i = 0; i < imageFileDialog.FileNames.Count(); i++) {
                     System.IO.File.Copy(imageFileDialog.FileNames[i], @"D:\" + category + @"\"+imageFileDialog.SafeFileNames[i]);
                 }
                 */
+
                 //ini yg outputnormalization taro disini atau didalam loop image
                 //neuralnet.ouputNormalization(imageFileDialog.FileNames.Count());
                 //neuralnet.trainBPL(neuralnet.listInput.ToArray(), neuralnet.listOutput.ToArray());

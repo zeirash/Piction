@@ -35,12 +35,13 @@ namespace ANNProject
                 MessageBox.Show("Predicting category success");
                 pictureBox1.Image = new Bitmap(edited);
 
+                //Add category name from compute
                 lbl_Category.Text = CategoryName;
                 lbl_Category.Visible = true;
                 flag = 2;
             }else if(flag == 2){
-
-                ArtDetail artDetail = new ArtDetail(image);
+                flag = 0;
+                ArtDetail artDetail = new ArtDetail(image, lbl_Category.Text);
                 artDetail.Show();
                 this.Dispose();
             }
