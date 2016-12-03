@@ -168,7 +168,7 @@ namespace ANNProject
             int neuronSquared = 1;
             NEURON_COUNT = neuronSquared;
 
-            //check Neuron is quadratically more then input
+            
             while (total_input > NEURON_COUNT)
             {
                 neuronSquared++;
