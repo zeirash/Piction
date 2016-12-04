@@ -280,9 +280,16 @@ namespace ANNProject
 
         public string classifying(Bitmap input)
         {
+            string category = "";
             int result = computeBPL(input);
 
-            return "g";
+            var items = new DirectoryInfo(path).GetDirectories("*", SearchOption.AllDirectories);
+            for(int i = 0; i < items.Count(); i++)
+            {
+                if (result-1 == i) category = items[i].Name;
+            }
+
+            return category;
         }
 
         public void preLoad()

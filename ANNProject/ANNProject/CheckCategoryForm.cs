@@ -51,7 +51,7 @@ namespace ANNProject
                 pictureBox1.Image = new Bitmap(edited);
 
                 //classification
-                
+                CategoryName = neuralnet.classifying(edited);
 
                 //Add category name from compute
                 lbl_Category.Text = CategoryName;

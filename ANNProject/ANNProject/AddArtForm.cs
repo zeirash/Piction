@@ -44,7 +44,9 @@ namespace ANNProject
             //        new { Text = neuralnet.listCategoryNames[i], Value = i }
             //    };
             //}
-
+            
+            //string[] subdir = Directory.GetDirectories(path);
+            //Console.WriteLine(subdir[6]);
             cmb_Category.DataSource = source;
             neuralnet.reloadPic();
         }
@@ -60,6 +62,7 @@ namespace ANNProject
             {
                 source.Add(dir.Name);
             }
+            
             cmb_Category.DataSource = source;
         }
 
