@@ -35,7 +35,6 @@ namespace ANNProject
         List<double[]> temp_data;
 
         double[][] inputPCA;
-        public bool isEmpty = true;
 
         public NeuralNet()
         {
@@ -46,7 +45,7 @@ namespace ANNProject
             listCategoryNames = new List<String>();
             temp_data = new List<double[]>();
 
-            an = new ActivationNetwork(new SigmoidFunction(), WIDTH * HEIGHT, 8, 1);
+            an = new ActivationNetwork(new SigmoidFunction(), WIDTH * HEIGHT, 10, 1);
             bpnn = new BackPropagationLearning(an);
         }
 
@@ -200,7 +199,7 @@ namespace ANNProject
 
             for (int i = 0; i < epoch; i++)
             {
-                errorrate = bpnn.RunEpoch(input, output);
+                errorrate = bpnn.RunEpoch(inputPCA, output);
 
                  if(error == errorrate)
                 {
