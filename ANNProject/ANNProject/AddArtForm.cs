@@ -15,6 +15,7 @@ namespace ANNProject
         OpenFileDialog imageFileDialog = new OpenFileDialog();
         string category;
         string path = "pictures/";
+        int index = 0;
 
         public AddArtForm()
         {
@@ -45,6 +46,7 @@ namespace ANNProject
             //}
 
             cmb_Category.DataSource = source;
+            neuralnet.reloadPic();
         }
 
         private void reloadCmb()
@@ -79,17 +81,18 @@ namespace ANNProject
                 {
                     Bitmap image = new Bitmap(imageFileDialog.FileNames[i]);
                     imageList1.Images.Add(image);
-                    ListViewItem item = new ListViewItem(System.IO.Path.GetFileNameWithoutExtension(imageFileDialog.SafeFileNames[i]), i);
+                    ListViewItem item = new ListViewItem(Path.GetFileNameWithoutExtension(imageFileDialog.SafeFileNames[i]), i);
                     listView_image.Items.Add(item);
 
                     //preprocess image
                     image = neuralnet.preprocessing(image);
 
                     //add to listinput
-                    //neuralnet.listInput.Add(neuralnet.inputNormalization(image));
+                    neuralnet.input(image);
 
                     //convert image to array and add to list tempdata
                     neuralnet.convertImageToArray(image);
+                    index++;
                 }
                 cmb_Category.Enabled = true;
                 cmb_Category.SelectedIndex = 0;
@@ -142,7 +145,9 @@ namespace ANNProject
                 
 
                 //ini yg outputnormalization taro disini atau didalam loop image
-                //neuralnet.ouputNormalization(imageFileDialog.FileNames.Count());
+                neuralnet.output();
+                Console.WriteLine(neuralnet.trainBPL());
+                Console.WriteLine(neuralnet.listInput.Count());
                 //neuralnet.trainBPL(neuralnet.listInput.ToArray(), neuralnet.listOutput.ToArray());
                 //neuralnet.computePCA();
                 //neuralnet.trainSOM(imageFileDialog.FileNames.Count());

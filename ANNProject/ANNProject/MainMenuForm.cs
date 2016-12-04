@@ -17,7 +17,7 @@ namespace ANNProject
         public MainMenuForm()
         {
             InitializeComponent();
-           
+            neuralNet.reloadPic();
         }
 
 

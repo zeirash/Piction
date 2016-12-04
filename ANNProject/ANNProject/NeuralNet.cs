@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using System.Drawing;
 using System.IO;
@@ -20,6 +18,7 @@ namespace ANNProject
         static int WIDTH = 10;
         static int HEIGHT = 10;
         private int NEURON_COUNT = 0;
+        string path = "pictures/";
 
         ActivationNetwork an;
         DistanceNetwork dn;
@@ -93,43 +92,103 @@ namespace ANNProject
             return result;
         }
 
-        public double[] inputNormalization(Bitmap edited)
+        public void reloadPic()
         {
-            double[] inputNormal = new double[WIDTH * HEIGHT];
+            var dir = Directory.GetDirectories(path);
 
-            //normalization input
+            foreach (var subdir in dir)
+            {
+                foreach (var img in Directory.GetFiles(subdir))
+                {
+                    Bitmap image = new Bitmap(img);
+                    image = preprocessing(image);
+                    input(image);
+                }
+            }
+        }
+
+        private double normalizedInput(double input)
+        {
+            double maxInput = 255, minInput = 0;
+            int high = 1, low = 0;
+
+            double normalizeInput = low + (input - minInput) / (maxInput - minInput) * (high - low);
+
+            return normalizeInput;
+        }
+
+        public void input(Bitmap edited)
+        {
+            //double[][] inputData = new double[allpic][];
+            //input
+            //for (int x = 0; x < allpic; x++)
+            //{
+            //available pic
+            double[] inputData = new double[WIDTH * HEIGHT];
             int index = 0;
             for (int i = 0; i < edited.Width; i++)
             {
                 for (int j = 0; j < edited.Height; j++)
                 {
-                    int input = edited.GetPixel(i, j).B / 255;
-                    inputNormal[index] = input;
+                    //int input = edited.GetPixel(i, j).B / 255;
+                    int pixel = edited.GetPixel(i, j).B;
+                    //normalized input
+                    //double normalizeInput = low + (pixel - minInput) / (maxInput - minInput) * (high - low);
+                    inputData[index] = normalizedInput(pixel);
                     index++;
                 }
 
             }
+            listInput.Add(inputData);
+            //}
 
-
-            return inputNormal;
+            //return inputData;
         }
-        //masih gk tau bener ato kgk/perlu or kgk
-        public void ouputNormalization(int totalInput)
+        
+        public void output()
         {
-            double[] output = new double[1];
-            output[0] = totalInput - 1;
-            tempOutput.Add(output);
-
-            //normalization output
-            listOutput = new List<double[]>();
-            for (int i = 0; i < tempOutput.Count(); i++)
+            int allcategory = new DirectoryInfo(path).GetDirectories("*", SearchOption.AllDirectories).Count();
+            double maxOutput = allcategory, minOutput = 0;
+            int high = 1, low = 0;
+            double[] outputData = new double[1];
+            //outputData[0] = totalInput - 1;
+            //tempOutput.Add(output);
+            var dir = Directory.GetDirectories(path);
+            int category = 0;
+            foreach (var subdir in dir)
             {
-                double[] outputNormal = new double[1];
-                outputNormal[0] = tempOutput[i][0] / (double)tempOutput.Count();
-                listOutput.Add(outputNormal);
+                foreach (var img in Directory.GetFiles(subdir))
+                {
+                    outputData[0] = category;
+                    //normalized output
+                    double normalizeOutput = low + (outputData[0] - minOutput) / (maxOutput - minOutput) * (high - low);
+                    outputData[0] = normalizeOutput;
+                    listOutput.Add(outputData);
+                }
+                category++;
             }
+            //normalization output
+            //listOutput = new List<double[]>();
+  
         }
 
+        public double trainBPL()
+        {
+            int epoch = 10000;
+            double errorrate = 0;
+            double error = 0.0000001;
+
+            for (int i = 0; i < epoch; i++)
+            {
+                errorrate = bpnn.RunEpoch(listInput.ToArray(), listOutput.ToArray());
+
+                 if(error == errorrate)
+                {
+                    return errorrate;
+                }
+            }
+            return errorrate;
+        }
 
         public void convertImageToArray(Bitmap image)
         {
@@ -188,37 +247,35 @@ namespace ANNProject
             }
         }
 
-        public double trainBPL(double [][] input, double [][] output)
+        public int computeBPL(Bitmap image)
         {
-            int epoch = 10000;
-            double errorrate = 0;
-            double error = 0.0000001;
+            Bitmap edited = preprocessing(image);
+            int allcategory = new DirectoryInfo(path).GetDirectories("*", SearchOption.AllDirectories).Count();
+            double maxOutput = allcategory, minOutput = 0;
+            int high = 1, low = 0;
+            double[] imageData = new double[WIDTH * HEIGHT];
+            int index = 0;
 
-            an = new ActivationNetwork(new SigmoidFunction(), WIDTH * HEIGHT, 8, 1);
-            bpnn = new BackPropagationLearning(an);
-
-            for (int i = 0; i < epoch; i++)
+            for (int i = 0; i < edited.Width; i++)
             {
-                errorrate = bpnn.RunEpoch(inputPCA, output);
-
-                 if(error == errorrate)
+                for (int j = 0; j < edited.Height; j++)
                 {
-                    return errorrate;
+                    //int input = edited.GetPixel(i, j).B / 255;
+                    int pixel = edited.GetPixel(i, j).B;
+                    //normalized input
+                    //double normalizeInput = low + (pixel - minInput) / (maxInput - minInput) * (high - low);
+                    imageData[index] = normalizedInput(pixel);
+                    index++;
                 }
+
             }
-            return errorrate;
-        }
+            double[] result = an.Compute(imageData);
 
-        public void computeBPL(Bitmap image)
-        {
-            an = new ActivationNetwork(new SigmoidFunction(), WIDTH * HEIGHT, 8, 1);
-            bpnn = new BackPropagationLearning(an);
+            //denormalize result
+            double imageResult = minOutput + (result[0] - low) / (high - low) * (maxOutput - minOutput);
+            imageResult = Math.Round(imageResult);
 
-            Bitmap processedImage = preprocessing(image);
-            double[] imageData = inputNormalization(processedImage);
-
-            an.Compute(imageData);
-
+            return (int)imageResult;
         }
 
         public void preLoad()

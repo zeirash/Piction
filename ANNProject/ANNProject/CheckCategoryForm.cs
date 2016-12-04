@@ -7,23 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace ANNProject
 {
     public partial class CheckCategoryForm : Form
     {
-        int flag = 0;
         NeuralNet neuralnet = new NeuralNet();
         Bitmap image, edited;
+        string path = "pictures/";
+        int flag = 0;
+
         public CheckCategoryForm()
         {
             InitializeComponent();
             lbl_Category.Visible = false;
+
         }
 
         private void btn_AddCheckArtCategory_Click(object sender, EventArgs e)
         {
-            
+            int allcategory = new DirectoryInfo(path).GetDirectories("*", SearchOption.AllDirectories).Count();
             //image = new Bitmap(pictureBox1.Image);
             if (flag == 1)
             {
@@ -31,9 +35,16 @@ namespace ANNProject
                 String CategoryName = "";
                 //preprocess the image
                 edited = neuralnet.preprocessing(edited);
-                neuralnet.computeBPL(edited);
+                //compute input data to recognize the result
+                int result = neuralnet.computeBPL(edited);
                 MessageBox.Show("Predicting category success");
                 pictureBox1.Image = new Bitmap(edited);
+
+                //classification
+                for(int i = 0; i < allcategory; i++)
+                {
+                    
+                }
 
                 //Add category name from compute
                 lbl_Category.Text = CategoryName;
