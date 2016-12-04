@@ -148,7 +148,7 @@ namespace ANNProject
         public void output()
         {
             int allcategory = new DirectoryInfo(path).GetDirectories("*", SearchOption.AllDirectories).Count();
-            double maxOutput = allcategory, minOutput = 0;
+            double maxOutput = allcategory, minOutput = 1;
             int high = 1, low = 0;
             double[] outputData = new double[1];
             //outputData[0] = totalInput - 1;
@@ -157,6 +157,7 @@ namespace ANNProject
             int category = 0;
             foreach (var subdir in dir)
             {
+                category++;
                 foreach (var img in Directory.GetFiles(subdir))
                 {
                     outputData[0] = category;
@@ -165,7 +166,6 @@ namespace ANNProject
                     outputData[0] = normalizeOutput;
                     listOutput.Add(outputData);
                 }
-                category++;
             }
             //normalization output
             //listOutput = new List<double[]>();
@@ -251,7 +251,7 @@ namespace ANNProject
         {
             Bitmap edited = preprocessing(image);
             int allcategory = new DirectoryInfo(path).GetDirectories("*", SearchOption.AllDirectories).Count();
-            double maxOutput = allcategory, minOutput = 0;
+            double maxOutput = allcategory, minOutput = 1;
             int high = 1, low = 0;
             double[] imageData = new double[WIDTH * HEIGHT];
             int index = 0;
@@ -276,6 +276,13 @@ namespace ANNProject
             imageResult = Math.Round(imageResult);
 
             return (int)imageResult;
+        }
+
+        public string classifying(Bitmap input)
+        {
+            int result = computeBPL(input);
+
+            return "g";
         }
 
         public void preLoad()

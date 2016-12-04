@@ -17,12 +17,20 @@ namespace ANNProject
         Bitmap image, edited;
         string path = "pictures/";
         int flag = 0;
+        bool isFirst = true;
 
         public CheckCategoryForm()
         {
             InitializeComponent();
             lbl_Category.Visible = false;
-
+            if (isFirst)
+            {
+                neuralnet.reloadPic();
+                Console.WriteLine(neuralnet.listInput.Count());
+                neuralnet.output();
+                Console.WriteLine(neuralnet.trainBPL());
+                isFirst = false;
+            }
         }
 
         private void btn_AddCheckArtCategory_Click(object sender, EventArgs e)
@@ -31,20 +39,19 @@ namespace ANNProject
             //image = new Bitmap(pictureBox1.Image);
             if (flag == 1)
             {
+                Console.WriteLine(allcategory);
                 edited = new Bitmap(image);
                 String CategoryName = "";
                 //preprocess the image
                 edited = neuralnet.preprocessing(edited);
                 //compute input data to recognize the result
-                int result = neuralnet.computeBPL(edited);
+                //string category = neuralnet.classifying(edited);
                 MessageBox.Show("Predicting category success");
+                Console.WriteLine(neuralnet.computeBPL(edited));
                 pictureBox1.Image = new Bitmap(edited);
 
                 //classification
-                for(int i = 0; i < allcategory; i++)
-                {
-                    
-                }
+                
 
                 //Add category name from compute
                 lbl_Category.Text = CategoryName;
