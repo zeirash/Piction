@@ -211,11 +211,11 @@ namespace ANNProject
             temp_data.Add(data);
         }
 
-        public void computePCA()
+        public double[][] computePCA(double[][] input)
         {
             //reloadPic();
             //calculate pca
-            pca = new PrincipalComponentAnalysis(listInput.ToArray());
+            pca = new PrincipalComponentAnalysis(input);
             pca.Compute();
 
             //input pca compute result to array
@@ -229,40 +229,69 @@ namespace ANNProject
                     inputPCA[i][j] = pca.Result[i, j];
                 }
             }
+
+            return inputPCA;
         }
 
-        public void trainSOM(int total_input)
+        public void trainSOM()
         {
             int epoch = 10000;
             double errorrate = 0;
             double minerror = 0.0000001;
             int neuronSquared = 1;
+            int allcategory = new DirectoryInfo(path).GetDirectories("*", SearchOption.AllDirectories).Count();
             NEURON_COUNT = neuronSquared;
 
             
-            while (total_input > NEURON_COUNT)
+            while (allcategory > NEURON_COUNT)
             {
                 neuronSquared++;
-                NEURON_COUNT = neuronSquared ^ 2;
+                NEURON_COUNT = neuronSquared * neuronSquared;
 
             }
 
-            dn = new DistanceNetwork(total_input, NEURON_COUNT);
+            dn = new DistanceNetwork(listInput.Count, NEURON_COUNT);
             som = new SOMLearning(dn);
 
             //train som
+            double[][] pcaresult = computePCA(listInput.ToArray());
             for (int i = 0; i < epoch; i++)
             {
-                errorrate = som.RunEpoch(inputPCA);
+                errorrate = som.RunEpoch(pcaresult);
 
                 if (errorrate < minerror)
                     break;
             }
         }
 
+        public void computeSOM(Bitmap image)
+        {
+            Bitmap edited = new Bitmap(image);
+            edited = preprocessing(edited);
+            double[][] imageData = new double[1][];
+            imageData[0] = new double[WIDTH * HEIGHT];
+            int index = 0;
+
+            for (int i = 0; i < edited.Width; i++)
+            {
+                for (int j = 0; j < edited.Height; j++)
+                {
+                    int pixel = edited.GetPixel(i, j).B;
+                    //normalized input
+                    imageData[0][index] = normalizedInput(pixel);
+                    index++;
+                }
+            }
+            double[][] pcaresult = computePCA(imageData);
+            //error, wrong length of the input vector
+            dn.Compute(pcaresult[0]);
+            int cluster = dn.GetWinner();
+        }
+
         public int computeBPL(Bitmap image)
         {
-            Bitmap edited = preprocessing(image);
+            Bitmap edited = new Bitmap(image);
+            edited = preprocessing(edited);
             int allcategory = new DirectoryInfo(path).GetDirectories("*", SearchOption.AllDirectories).Count();
             double maxOutput = allcategory, minOutput = 1;
             int high = 1, low = 0;

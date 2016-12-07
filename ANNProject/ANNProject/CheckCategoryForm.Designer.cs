@@ -102,6 +102,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CheckCategoryForm";
             this.Text = "Check Category";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.CheckCategoryForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

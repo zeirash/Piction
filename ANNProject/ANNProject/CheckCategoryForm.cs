@@ -57,7 +57,9 @@ namespace ANNProject
                 lbl_Category.Text = CategoryName;
                 lbl_Category.Visible = true;
                 flag = 2;
-            }else if(flag == 2){
+                btn_CheckCaegory.Text = "art detail";
+            }
+            else if(flag == 2){
                 flag = 0;
                 ArtDetail artDetail = new ArtDetail(image, lbl_Category.Text);
                 artDetail.Show();
@@ -80,6 +82,11 @@ namespace ANNProject
                     btn_CheckCaegory.Text = "Check Category";
                 }
             }
+        }
+
+        private void CheckCategoryForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void btn_Back_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -15,6 +15,7 @@ namespace ANNProject
         Bitmap image;
         NeuralNet neuralNet = new NeuralNet();
         string categoryName;
+
         public ArtDetail(Bitmap image, String categoryName)
         {
             InitializeComponent();
@@ -25,6 +26,9 @@ namespace ANNProject
             label1.Text = categoryName;
 
             neuralNet.reloadPic();
+            //neuralNet.computePCA(neuralNet.listInput.ToArray());
+            neuralNet.trainSOM();
+            neuralNet.computeSOM(image);
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
