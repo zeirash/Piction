@@ -12,8 +12,9 @@ namespace ANNProject
 {
     public partial class ArtDetail : Form
     {
-        string categoryName;
         Bitmap image;
+        NeuralNet neuralNet = new NeuralNet();
+        string categoryName;
         public ArtDetail(Bitmap image, String categoryName)
         {
             InitializeComponent();
@@ -22,6 +23,8 @@ namespace ANNProject
 
             pictureBox1.Image = image;
             label1.Text = categoryName;
+
+            neuralNet.reloadPic();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

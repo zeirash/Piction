@@ -40,7 +40,7 @@ namespace ANNProject
         private void btn_Browse_Click(object sender, EventArgs e)
         {
             //check if there is art in the system
-            if (true)
+            if (neuralNet.listInput.Count == 0)
             {
                 MessageBox.Show("Add some art first!");
             }

@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.listView_browseArt = new System.Windows.Forms.ListView();
-            this.btn_Back = new System.Windows.Forms.LinkLabel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.btn_Back = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
@@ -50,11 +50,17 @@
             // 
             this.listView_browseArt.LargeImageList = this.imageList1;
             this.listView_browseArt.Location = new System.Drawing.Point(9, 34);
-            this.listView_browseArt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listView_browseArt.Margin = new System.Windows.Forms.Padding(2);
             this.listView_browseArt.Name = "listView_browseArt";
             this.listView_browseArt.Size = new System.Drawing.Size(589, 214);
             this.listView_browseArt.TabIndex = 1;
             this.listView_browseArt.UseCompatibleStateImageBehavior = false;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // btn_Back
             // 
@@ -66,12 +72,7 @@
             this.btn_Back.TabIndex = 2;
             this.btn_Back.TabStop = true;
             this.btn_Back.Text = "Back";
-            // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.btn_Back.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btn_Back_LinkClicked);
             // 
             // BrowseArtForm
             // 
@@ -81,7 +82,7 @@
             this.Controls.Add(this.btn_Back);
             this.Controls.Add(this.listView_browseArt);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "BrowseArtForm";
             this.Text = "Browse Art";
             this.ResumeLayout(false);

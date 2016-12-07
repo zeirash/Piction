@@ -32,6 +32,7 @@ namespace ANNProject
         List<String> listImageName;
         public List<String> listCategoryNames;
         List<double[]> temp_data;
+        public Dictionary<int, string> dictCategory = new Dictionary<int, string>();
 
         double[][] inputPCA;
 
@@ -169,7 +170,18 @@ namespace ANNProject
             }
             //normalization output
             //listOutput = new List<double[]>();
-  
+        }
+
+        public void getCategory()
+        {
+            var dir = new DirectoryInfo(path).GetDirectories("*", SearchOption.AllDirectories);
+            int category = 0;
+            foreach (DirectoryInfo subdir in dir)
+            {
+                category++;
+                dictCategory.Add(category, subdir.Name);
+            }
+
         }
 
         public double trainBPL()
@@ -201,8 +213,9 @@ namespace ANNProject
 
         public void computePCA()
         {
+            //reloadPic();
             //calculate pca
-            pca = new PrincipalComponentAnalysis(temp_data.ToArray());
+            pca = new PrincipalComponentAnalysis(listInput.ToArray());
             pca.Compute();
 
             //input pca compute result to array
