@@ -258,7 +258,7 @@ namespace ANNProject
             for (int i = 0; i < epoch; i++)
             {
                 errorrate = som.RunEpoch(pcaresult);
-
+                //Console.WriteLine(errorrate);
                 if (errorrate < minerror)
                     break;
             }
@@ -325,10 +325,10 @@ namespace ANNProject
             string category = "";
             int result = computeBPL(input);
 
-            var items = new DirectoryInfo(path).GetDirectories("*", SearchOption.AllDirectories);
-            for(int i = 0; i < items.Count(); i++)
+            var subdir = new DirectoryInfo(path).GetDirectories("*", SearchOption.AllDirectories);
+            for(int i = 0; i < subdir.Count(); i++)
             {
-                if (result-1 == i) category = items[i].Name;
+                if (result-1 == i) category = subdir[i].Name;
             }
 
             return category;
@@ -345,7 +345,7 @@ namespace ANNProject
             catch (Exception)
             {
                 an = new ActivationNetwork(new SigmoidFunction(), 100, 100, 1);
-                dn = new DistanceNetwork(100, 100);
+                dn = new DistanceNetwork(listInput.Count, NEURON_COUNT);
             }
         }
 
